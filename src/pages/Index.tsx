@@ -3,10 +3,6 @@ import { motion } from "framer-motion";
 import { ArrowRight, Award, Globe, Paintbrush } from "lucide-react";
 import heroImage from "@/assets/hero-artifact.jpg";
 import logo from "@/assets/logo.png";
-import productFigurines from "@/assets/product-figurines.jpeg";
-import productNandi from "@/assets/product-nandi.jpeg";
-import productHorse from "@/assets/product-horse.jpeg";
-import productElephant from "@/assets/product-elephant.jpeg";
 
 const features = [
   {
@@ -24,13 +20,6 @@ const features = [
     title: "Premium Quality",
     description: "Only the finest wood and materials are selected for our figurines, artifacts, and gift items.",
   },
-];
-
-const productImages = [
-  { src: productElephant, alt: "Hand-painted wooden elephant figurines", label: "Elephant Figurines" },
-  { src: productHorse, alt: "Hand-painted wooden horse head sculpture", label: "Horse Sculptures" },
-  { src: productFigurines, alt: "Colorful Rajasthani wooden musician figurines", label: "Musician Figurines" },
-  { src: productNandi, alt: "Hand-painted wooden Nandi bull figurine", label: "Nandi Bull" },
 ];
 
 const Index = () => {
@@ -51,23 +40,31 @@ const Index = () => {
           <motion.img
             src={logo}
             alt="BSA Emblem"
-            className="h-24 w-auto mx-auto mb-6 brightness-0 invert"
+            className="h-20 w-auto mx-auto mb-6 brightness-0 invert"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8 }}
           />
+          <motion.h1
+            className="font-display text-5xl md:text-7xl font-bold text-primary-foreground tracking-wider mb-4"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            BLACK STONE ART
+          </motion.h1>
           <motion.p
             className="font-body text-primary-foreground/80 text-lg md:text-xl mb-8 tracking-wide"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
           >
             Manufacturer &amp; Exporter of Wooden Handicrafts — Jodhpur, Rajasthan
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
           >
             <Link
               to="/products"
@@ -77,59 +74,6 @@ const Index = () => {
               <ArrowRight size={18} />
             </Link>
           </motion.div>
-        </div>
-      </section>
-
-      {/* Product Showcase Grid */}
-      <section className="py-24 px-6 bg-background">
-        <div className="container mx-auto max-w-6xl">
-          <motion.h2
-            className="font-display text-3xl md:text-4xl font-bold text-center mb-4 text-foreground"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            Our Finest Creations
-          </motion.h2>
-          <motion.p
-            className="font-body text-muted-foreground text-center mb-14 max-w-lg mx-auto"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-          >
-            Each piece is a testament to the artistry and tradition of Jodhpur's master craftsmen.
-          </motion.p>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-            {productImages.map((img, i) => (
-              <motion.div
-                key={img.label}
-                className={`relative group overflow-hidden rounded-2xl ${
-                  i === 0 ? "col-span-2 row-span-2" : ""
-                }`}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: i * 0.1 }}
-              >
-                <img
-                  src={img.src}
-                  alt={img.alt}
-                  className={`w-full object-cover transition-transform duration-700 group-hover:scale-110 ${
-                    i === 0 ? "h-full min-h-[400px]" : "h-64 md:h-72"
-                  }`}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-500">
-                  <span className="font-display text-sm md:text-base font-semibold text-primary-foreground">
-                    {img.label}
-                  </span>
-                </div>
-              </motion.div>
-            ))}
-          </div>
         </div>
       </section>
 
