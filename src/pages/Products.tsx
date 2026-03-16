@@ -74,7 +74,7 @@ const Products = () => {
           </a>
         </motion.div>
 
-        {/* Full-width Instagram Embed */}
+        {/* Full-width Instagram Embed - taller for more posts */}
         <motion.div
           className="w-full"
           initial={{ opacity: 0, y: 30 }}
@@ -84,9 +84,9 @@ const Products = () => {
           <iframe
             src={`https://www.instagram.com/${INSTAGRAM_HANDLE}/embed`}
             className="w-full border-0 rounded-2xl bg-card"
-            height="900"
+            height="1200"
             allowTransparency
-            scrolling="no"
+            scrolling="yes"
             title="Black Stone Art Instagram Feed"
           />
         </motion.div>
