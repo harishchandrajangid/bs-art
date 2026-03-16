@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRight, Award, Globe, Paintbrush } from "lucide-react";
+import heroImage from "@/assets/hero-artifact.jpg";
 import logo from "@/assets/logo.png";
 import productFigurines from "@/assets/product-figurines.jpeg";
 import productNandi from "@/assets/product-nandi.jpeg";
@@ -36,38 +37,37 @@ const Index = () => {
   return (
     <div className="min-h-screen">
       {/* Hero */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-primary">
-        <div className="absolute inset-0 bg-gradient-to-b from-primary/90 via-primary/70 to-primary/90" />
+      <section className="relative h-screen flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0">
+          <img
+            src={heroImage}
+            alt="Handcrafted wooden elephant figurine"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-primary/60" />
+        </div>
 
-        <div className="relative z-10 text-center px-6 max-w-3xl py-32">
+        <div className="relative z-10 text-center px-6 max-w-3xl">
           <motion.img
             src={logo}
             alt="BSA Emblem"
-            className="h-20 w-auto mx-auto mb-6 brightness-0 invert"
+            className="h-24 w-auto mx-auto mb-6 brightness-0 invert"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8 }}
           />
-          <motion.h1
-            className="font-display text-5xl md:text-7xl font-bold text-primary-foreground tracking-wider mb-4"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            BLACK STONE ART
-          </motion.h1>
           <motion.p
             className="font-body text-primary-foreground/80 text-lg md:text-xl mb-8 tracking-wide"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
           >
             Manufacturer &amp; Exporter of Wooden Handicrafts — Jodhpur, Rajasthan
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
           >
             <Link
               to="/products"
