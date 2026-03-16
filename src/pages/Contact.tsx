@@ -96,7 +96,7 @@ const Contact = () => {
             {/* Map */}
             <div className="mt-8 rounded-2xl overflow-hidden h-52">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3578.0!2d73.02!3d26.28!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjbCsDE3JzAwLjAiTiA3M8KwMDEnMDAuMCJF!5e0!3m2!1sen!2sin!4v1"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3578.5!2d73.0169!3d26.2833!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x394167a2a4f1e3e7%3A0x9c3f1c2f4f5e6a7b!2sB-41%2C%20Industrial%20Estate%2C%20New%20Powerhouse%20Rd%2C%20Shastri%20Nagar%2C%20Jodhpur%2C%20Rajasthan%20342001!5e0!3m2!1sen!2sin!4v1"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
