@@ -1,166 +1,104 @@
-import { useState } from "react";
 import { motion } from "framer-motion";
-import { MapPin, Mail, Phone, Instagram, Send } from "lucide-react";
-import { useToast } from "@/hooks/use-toast";
+import { MapPin, Mail, Phone, Instagram, ExternalLink } from "lucide-react";
 
 const contactInfo = [
   {
     icon: MapPin,
-    label: "Address",
+    label: "Visit Us",
     value: "B-41, Industrial Estate, New Powerhouse Rd, Sector H, Shastri Nagar, Jodhpur, Rajasthan 342001",
     href: "https://maps.google.com/?q=B+41+Industrial+Estate+New+Powerhouse+Rd+Shastri+Nagar+Jodhpur+Rajasthan+342001",
+    external: true,
   },
   {
     icon: Mail,
-    label: "Email",
+    label: "Email Us",
     value: "blackstoneart@gmail.com",
     href: "mailto:blackstoneart@gmail.com",
+    external: false,
   },
   {
     icon: Phone,
-    label: "Phone",
+    label: "Call Us",
     value: "+91 96499 07021",
     href: "tel:+919649907021",
+    external: false,
   },
   {
     icon: Instagram,
-    label: "Instagram",
+    label: "Follow Us",
     value: "@blackstoneart_jodhpur",
     href: "https://instagram.com/blackstoneart_jodhpur",
+    external: true,
   },
 ];
 
 const Contact = () => {
-  const { toast } = useToast();
-  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    toast({
-      title: "Message Sent!",
-      description: "Thank you for reaching out. We'll get back to you soon.",
-    });
-    setFormData({ name: "", email: "", message: "" });
-  };
-
   return (
     <div className="min-h-screen pt-28 pb-20">
-      <div className="container mx-auto px-6 max-w-5xl">
+      <div className="container mx-auto px-6 max-w-4xl">
         <motion.div
-          className="text-center mb-16"
+          className="text-center mb-20"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
           <h1 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-4">
-            Contact Us
+            Get in Touch
           </h1>
-          <p className="font-body text-muted-foreground max-w-xl mx-auto">
-            We'd love to hear from you. Reach out for orders, inquiries, or collaborations.
+          <p className="font-body text-muted-foreground max-w-md mx-auto">
+            We'd love to hear from you — reach out for orders, inquiries, or collaborations.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-          {/* Contact Info */}
-          <motion.div
-            className="space-y-6"
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            <h2 className="font-display text-2xl font-bold text-foreground mb-8">
-              Get in Touch
-            </h2>
-            {contactInfo.map((info) => (
-              <a
-                key={info.label}
-                href={info.href}
-                target={info.label === "Address" || info.label === "Instagram" ? "_blank" : undefined}
-                rel="noopener noreferrer"
-                className="flex items-start gap-4 p-4 rounded-xl hover:bg-card transition-colors group"
-              >
-                <div className="w-10 h-10 rounded-full bg-accent/10 text-accent flex items-center justify-center shrink-0 group-hover:bg-accent group-hover:text-accent-foreground transition-colors">
-                  <info.icon size={18} />
-                </div>
-                <div>
-                  <div className="font-body text-xs text-muted-foreground uppercase tracking-wider mb-1">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          {contactInfo.map((info, i) => (
+            <motion.a
+              key={info.label}
+              href={info.href}
+              target={info.external ? "_blank" : undefined}
+              rel="noopener noreferrer"
+              className="group flex items-start gap-5 p-6 rounded-2xl bg-card border border-border/50 hover:border-accent/30 hover:shadow-lg transition-all duration-300"
+              initial={{ opacity: 0, y: 25 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.15 * i }}
+            >
+              <div className="w-12 h-12 rounded-xl bg-accent/10 text-accent flex items-center justify-center shrink-0 group-hover:bg-accent group-hover:text-accent-foreground transition-colors duration-300">
+                <info.icon size={22} />
+              </div>
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center gap-2 mb-1">
+                  <span className="font-display text-base font-semibold text-foreground">
                     {info.label}
-                  </div>
-                  <div className="font-body text-sm text-foreground">
-                    {info.value}
-                  </div>
+                  </span>
+                  {info.external && (
+                    <ExternalLink size={13} className="text-muted-foreground" />
+                  )}
                 </div>
-              </a>
-            ))}
-
-            {/* Map */}
-            <div className="mt-8 rounded-2xl overflow-hidden h-52">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3578.0!2d73.02!3d26.28!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjbCsDE3JzAwLjAiTiA3M8KwMDEnMDAuMCJF!5e0!3m2!1sen!2sin!4v1"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="Black Stone Art Location"
-              />
-            </div>
-          </motion.div>
-
-          {/* Contact Form */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-          >
-            <h2 className="font-display text-2xl font-bold text-foreground mb-8">
-              Send a Message
-            </h2>
-            <form onSubmit={handleSubmit} className="space-y-5">
-              <div>
-                <label className="font-body text-sm text-muted-foreground mb-1.5 block">Name</label>
-                <input
-                  type="text"
-                  required
-                  value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="w-full px-4 py-3 rounded-xl border border-border bg-card font-body text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-accent/30 transition-all"
-                  placeholder="Your name"
-                />
+                <p className="font-body text-sm text-muted-foreground leading-relaxed">
+                  {info.value}
+                </p>
               </div>
-              <div>
-                <label className="font-body text-sm text-muted-foreground mb-1.5 block">Email</label>
-                <input
-                  type="email"
-                  required
-                  value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="w-full px-4 py-3 rounded-xl border border-border bg-card font-body text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-accent/30 transition-all"
-                  placeholder="your@email.com"
-                />
-              </div>
-              <div>
-                <label className="font-body text-sm text-muted-foreground mb-1.5 block">Message</label>
-                <textarea
-                  required
-                  rows={5}
-                  value={formData.message}
-                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  className="w-full px-4 py-3 rounded-xl border border-border bg-card font-body text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-accent/30 transition-all resize-none"
-                  placeholder="Tell us about your requirements..."
-                />
-              </div>
-              <button
-                type="submit"
-                className="inline-flex items-center gap-2 bg-accent text-accent-foreground px-8 py-3 rounded-full font-body font-medium tracking-wide hover:bg-accent/90 transition-colors w-full justify-center"
-              >
-                Send Message
-                <Send size={18} />
-              </button>
-            </form>
-          </motion.div>
+            </motion.a>
+          ))}
         </div>
+
+        {/* Business Hours */}
+        <motion.div
+          className="mt-16 text-center p-10 rounded-2xl bg-card border border-border/50"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.7 }}
+        >
+          <h2 className="font-display text-2xl font-bold text-foreground mb-2">
+            Business Hours
+          </h2>
+          <p className="font-body text-muted-foreground text-sm">
+            Monday – Saturday: 10:00 AM – 7:00 PM IST
+          </p>
+          <p className="font-body text-muted-foreground text-sm">
+            Sunday: Closed
+          </p>
+        </motion.div>
       </div>
     </div>
   );
