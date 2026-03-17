@@ -35,60 +35,73 @@ const features = [
 
 const Index = () => {
   return (
-    <div className="min-h-screen">
-      {/* Hero - Full screen */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0">
-          <img
-            src={heroImage}
-            alt="Handcrafted wooden elephant figurine"
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-primary/60" />
-        </div>
-        <div className="relative z-10 text-center px-6 max-w-3xl">
-          <motion.img
-            src={logo}
-            alt="BSA Emblem"
-            className="h-24 w-auto mx-auto mb-8 brightness-0 invert"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8 }}
-          />
-          <motion.p
-            className="font-body text-primary-foreground/80 text-lg md:text-xl mb-8 tracking-wide"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-          >
-            Manufacturer &amp; Exporter of Wooden Handicrafts — Jodhpur, Rajasthan
-          </motion.p>
+    <div className="min-h-screen pt-20">
+      {/* Hero - Split card layout */}
+      <section className="px-6 py-8">
+        <div className="container mx-auto max-w-6xl">
           <motion.div
-            className="flex items-center justify-center gap-4"
-            initial={{ opacity: 0, y: 20 }}
+            className="bg-card rounded-3xl overflow-hidden"
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
+            transition={{ duration: 0.7 }}
           >
-            <Link
-              to="/products"
-              className="inline-flex items-center gap-2 bg-accent text-accent-foreground px-8 py-3 rounded-full font-body font-medium tracking-wide hover:bg-accent/90 transition-colors duration-300"
-            >
-              View Collection
-              <ArrowRight size={18} />
-            </Link>
-            <a
-              href="https://instagram.com/blackstoneart_jodhpur"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-12 h-12 rounded-full border border-primary-foreground/30 flex items-center justify-center text-primary-foreground/70 hover:bg-primary-foreground/10 transition-colors"
-            >
-              <Instagram size={20} />
-            </a>
+            <div className="grid grid-cols-1 md:grid-cols-2 min-h-[500px]">
+              {/* Image */}
+              <div className="relative overflow-hidden">
+                <img
+                  src={heroImage}
+                  alt="Handcrafted wooden artifacts from Jodhpur"
+                  className="w-full h-full object-cover min-h-[300px]"
+                />
+              </div>
+
+              {/* Content */}
+              <div className="flex flex-col justify-center p-10 md:p-14">
+                <motion.h1
+                  className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-6"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.3 }}
+                >
+                  Crafting Tradition, Exporting Beauty
+                </motion.h1>
+                <motion.p
+                  className="font-body text-muted-foreground text-base md:text-lg leading-relaxed mb-8"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.45 }}
+                >
+                  Welcome to Black Stone Art: Manufacturer &amp; Exporter of premium wooden handicrafts from the heart of Jodhpur, Rajasthan. Where artistry meets heritage.
+                </motion.p>
+                <motion.div
+                  className="flex items-center gap-4"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.6 }}
+                >
+                  <Link
+                    to="/products"
+                    className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-7 py-3 rounded-full font-body font-medium text-sm tracking-wide hover:bg-primary/90 transition-colors"
+                  >
+                    View Collection
+                    <ArrowRight size={16} />
+                  </Link>
+                  <a
+                    href="https://instagram.com/blackstoneart_jodhpur"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-11 h-11 rounded-full border border-border flex items-center justify-center text-muted-foreground hover:text-accent hover:border-accent transition-colors"
+                  >
+                    <Instagram size={18} />
+                  </a>
+                </motion.div>
+              </div>
+            </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Statement section - large centered text */}
+      {/* Statement section */}
       <section className="py-28 px-6">
         <div className="container mx-auto max-w-4xl text-center">
           <motion.h2
@@ -112,7 +125,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Recent Work - card grid */}
+      {/* Recent Work */}
       <section className="px-6 pb-24">
         <div className="container mx-auto max-w-6xl">
           <div className="flex items-center justify-between mb-10">
@@ -166,7 +179,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Features - horizontal cards */}
+      {/* Features */}
       <section className="py-24 px-6 bg-card">
         <div className="container mx-auto max-w-5xl">
           <motion.h3
