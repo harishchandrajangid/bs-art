@@ -26,17 +26,17 @@ const Navbar = () => {
   }, [location]);
 
   return (
-    <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[92%] max-w-3xl">
-      <div
-        className={`glass-nav rounded-full px-6 py-3 flex items-center justify-between transition-shadow duration-500 ${
-          scrolled ? "shadow-lg" : ""
-        }`}
-      >
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled ? "bg-background/90 backdrop-blur-xl shadow-sm" : "bg-background"
+      }`}
+    >
+      <div className="container mx-auto max-w-6xl px-6 py-4 flex items-center justify-between">
         {/* Logo + Brand */}
-        <Link to="/" className="flex items-center gap-2">
-          <img src={logo} alt="Black Stone Art Logo" className="h-8 w-auto" />
-          <span className="font-display text-sm font-bold tracking-wider text-foreground hidden sm:inline">
-            BLACK STONE ART
+        <Link to="/" className="flex items-center gap-3">
+          <img src={logo} alt="Black Stone Art Logo" className="h-9 w-auto" />
+          <span className="font-display text-base font-bold tracking-wider text-foreground">
+            Black Stone Art
           </span>
         </Link>
 
@@ -46,19 +46,22 @@ const Navbar = () => {
             <Link
               key={link.path}
               to={link.path}
-              className={`relative text-sm font-body font-medium tracking-wide transition-colors duration-300 hover:text-accent group ${
-                location.pathname === link.path ? "text-accent" : "text-foreground"
+              className={`text-sm font-body font-medium tracking-wide transition-colors duration-300 hover:text-accent ${
+                location.pathname === link.path ? "text-foreground" : "text-muted-foreground"
               }`}
             >
               {link.label}
-              <span
-                className={`absolute -bottom-1 left-0 h-[2px] bg-accent transition-all duration-300 ${
-                  location.pathname === link.path ? "w-full" : "w-0 group-hover:w-full"
-                }`}
-              />
             </Link>
           ))}
         </div>
+
+        {/* CTA Button */}
+        <Link
+          to="/contact"
+          className="hidden md:inline-flex items-center bg-primary text-primary-foreground px-6 py-2.5 rounded-full font-body text-sm font-medium tracking-wide hover:bg-primary/90 transition-colors"
+        >
+          Get in Touch
+        </Link>
 
         {/* Mobile toggle */}
         <button
@@ -72,18 +75,24 @@ const Navbar = () => {
 
       {/* Mobile menu */}
       {isOpen && (
-        <div className="md:hidden mt-2 glass-nav rounded-2xl px-6 py-4 flex flex-col gap-4 animate-in fade-in slide-in-from-top-2 duration-300">
+        <div className="md:hidden px-6 pb-4 flex flex-col gap-3 bg-background border-t border-border/50">
           {navLinks.map((link) => (
             <Link
               key={link.path}
               to={link.path}
-              className={`text-sm font-body font-medium tracking-wide transition-colors hover:text-accent ${
-                location.pathname === link.path ? "text-accent" : "text-foreground"
+              className={`text-sm font-body font-medium tracking-wide py-2 transition-colors hover:text-accent ${
+                location.pathname === link.path ? "text-foreground" : "text-muted-foreground"
               }`}
             >
               {link.label}
             </Link>
           ))}
+          <Link
+            to="/contact"
+            className="inline-flex items-center justify-center bg-primary text-primary-foreground px-6 py-2.5 rounded-full font-body text-sm font-medium mt-1"
+          >
+            Get in Touch
+          </Link>
         </div>
       )}
     </nav>
